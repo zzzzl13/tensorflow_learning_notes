@@ -21,7 +21,7 @@ y_train = tf.cast(y_train, tf.float32)
 # from_tensor_slices函数切分传入的张量的第一个维度，生成相应的数据集，使输入特征和标签值一一对应
 train_db = tf.data.Dataset.from_tensor_slices((x_train, y_train)).batch(32)
 
-# 生成神经网络的参数，输入层为4个神经元，隐藏层为32个神经元，2层隐藏层，输出层为3个神经元
+# 生成神经网络的参数，输入层为2个神经元，隐藏层为11个神经元，2层隐藏层，输出层为1个神经元
 # 用tf.Variable()保证参数可训练
 w1 = tf.Variable(tf.random.normal([2, 11]), dtype=tf.float32)
 b1 = tf.Variable(tf.constant(0.01, shape=[11]))
@@ -55,7 +55,8 @@ for epoch in range(epoch):
             loss_regularization = tf.reduce_sum(loss_regularization)
             loss = loss_mse + 0.03 * loss_regularization  # REGULARIZER = 0.03
 
-        # 计算loss对各个参数的梯度
+        # 计算loss对各个参数的梯
+        # 度
         variables = [w1, b1, w2, b2]
         grads = tape.gradient(loss, variables)
 
