@@ -19,7 +19,7 @@ model.compile(optimizer='adam',
               loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False),
               metrics=['sparse_categorical_accuracy'])
 
-checkpoint_save_path = "./checkpoint/mnist.ckpt"    # 定义存储文件名
+checkpoint_save_path = "D:/python scripts/learn!/training backup/checkpoint/mnist.ckpt"    # 定义存储文件名
 if os.path.exists(checkpoint_save_path + '.index'):  #  模型存储后会同步生成.index索引文件  因此可以此判断此前是否有模型被存储
     print('-------------load the model-----------------')
     model.load_weights(checkpoint_save_path)     # 如果存在 读取模型
